@@ -1,0 +1,125 @@
+#cards {
+  /* 軸 : row(預設) */
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  box-sizing: border-box;
+
+  /* 卡片在總容器內的排版 => 一行13張 共4行 */
+  /* 100 / 13 = 7.. */
+  flex: 7% 0 1;
+  /* flex = flex-basis(占用比例), flex-grow(剩餘空間分配), flex-shrink(空間不夠收縮)  */
+  height: 8vw;
+  /* vw 相對單位 8vw = 8%視窗大小 */
+
+  border: 2px solid gray;
+
+  margin: 2px;
+  /* 卡片內元素的排版 => 兩個數字 一個圖片 */
+  display: flex;
+  /* main axis */
+  flex-direction: column;
+  justify-content: space-around;
+  /* space-around 左右margin是一樣的 */
+
+
+
+}
+
+.card img {
+  max-width: 30%;
+  align-self: center;
+  /* align-self 排交叉軸用的 目前主軸為column 因此可以橫向置中 */
+}
+
+.card p {
+  margin: 0;
+  /* 瀏覽器會預設margin 需要手動改成0 才不會導致文字跑出card  */
+  font-size: 10px;
+}
+
+/* :last-child 用法該元素的最後一個 */
+.card p:last-child {
+  transform: rotate(180deg);
+}
+
+.back {
+  background: url('https://assets-lighthouse.alphacamp.co/uploads/image/file/9222/ExportedContentImage_00.png');
+  background-size: cover;
+
+}
+
+.paired {
+  background-color: rgb(141, 62, 214);
+}
+
+#header {
+  display: flex;
+  margin: 0;
+  flex-direction: column;
+  align-items: flex-end;
+  /* 次要軸 */
+  width: 100%;
+}
+
+#header .title {
+
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  /* 主要軸 */
+}
+
+#header .title img {
+  max-width: 3em;
+
+}
+
+#header .title h2 {
+
+  padding-left: 0.5em;
+
+}
+
+
+.wrong {
+  animation: wrongAnimation 0.2s;
+  animation-iteration-count: 5;
+}
+
+/* 動畫 */
+@keyframes wrongAnimation {
+  /* 0% {
+
+  } */
+
+  to {
+    border: 2px solid #f1c232;
+
+  }
+}
+
+/** Game finished **/
+.completed {
+  position: absolute;
+  z-index: 999;
+  top: 33vh;
+  background-color: RGBA(232, 246, 254, 0.8);
+  width: 100vw;
+  padding: 50px 0;
+}
+
+.completed>p {
+  font-size: 1.5em;
+  color: black;
+  text-align: center;
+  margin: 0;
+}
+
+.completed>p:first-child {
+  font-size: 3em;
+  font-weight: 700;
+  color: #758d9a;
+}
